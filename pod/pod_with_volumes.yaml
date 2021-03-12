@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: null
+  labels:
+    run: mypod
+  name: mypod
+spec:
+  containers:
+  - image: nginx
+    name: mypod
+    resources: {}
+    volumeMounts:
+    - name: log-vol-1
+      mountPath: /var/log
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+  volumes:
+  - name: log-vol-1
+    hostPath: /var/log
+  - name: log-vol-2
+    persistentVolumeClaim:
+      claimName: myclaim
