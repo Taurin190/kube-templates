@@ -17,7 +17,11 @@ spec:
   restartPolicy: Always
   volumes:
   - name: log-vol-1
-    hostPath: /var/log
+    hostPath: 
+      path: /var/log
+      type: Directory
   - name: log-vol-2
     persistentVolumeClaim:
       claimName: myclaim
+  - name: log-vol-3
+    emptyDir: {}
